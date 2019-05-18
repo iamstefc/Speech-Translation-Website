@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+	<style>
+    body {background-image: url("pexels-photo-988872.jpeg"); }
+	</style>
+		<title>Deaf Assist Website</title>
+		<link rel="stylesheet" href="main.css">
+	</head>
+
+<body>
+	<header>
+    </br>
+		<h1> EASY NAVIGATION </h1>
+        <p style="text-align:center; font-weight: bold; font-style: italic; "> CIS400/600 - Human Computer Interaction</p>
+		<p style="text-align:center; font-weight: bold; font-style: italic; "> Physiological Computing: Technology Assisted Navigation in Public Spaces for Hard of Hearing People</p>
+    </br>
+        </header>
+	</header>
+	
+<div class="tab">
+  <button class="tablinks" onclick="openCity1(event, 'Threads')">	Threads</button>
+   <button class="tablinks" onclick="openCity3(event, 'Maps')">		Maps</button>
+  <button class="tablinks" onclick="openCity2(event, 'Locations')">	Locations</button>
+  <button class="tablinks" onclick="openCity2(event, 'Phrases')">	Phrases</button>
+  <button class="tablinks" onclick="buttonsHandler(this)">			Airport</button>  
+</div>
+
+<div id="Threads" class="tabcontent">
+  <h3>Threads</h3>
+  <p style="color: black"> Message will display here shortly... </p>
+</div>
+
+<div id="Maps"  style="width: 800px; height: 400px" class="tabcontent">
+  <p style="color: black">Try to put Google Maps here</p> 
+</div>
+
+<div id="Locations" class="tabcontent">
+  <h3>Locations</h3>
+  <img src="airport-maps.jpg" alt="Airport Map Example">
+ </div>
+  
+<div id="Phrases" class="tabcontent">
+  <h3>Phrases</h3>
+  <p style="color: black"> Can I take my pet through the security checkpoint?</p>
+  <p style="color: black"> I forgot my identification; can I still proceed through security screening?</p>
+  <p style="color: black"> What are the size restrictions for carry-on bags?</p>
+  <p style="color: black"> How do I retrieve a prohibited item that was removed from my baggage?</p>
+  <p style="color: black"> I am traveling with medication, are there any requirements I should be aware of?</p>
+</div>
+
+<script>
+    // Initialize and add the map
+	// We took inspiration from https://www.w3schools.com/graphics/google_maps_intro.asp
+	// We used an active API-KEY by Stefano for getting the url link from Google Maps
+function initMap() {
+	var uluru = {lat: 43.0481, lng: 76.1474};
+	var map = new google.maps.Map(document.getElementById('Maps'), {zoom: 4, center: uluru });
+	var marker = new google.maps.Marker({position: uluru, map: map});	
+}
+
+function buttonsHandler(evt){
+	var audio = document.getElementById("audio_airport");
+	audio.play();
+}
+
+function openCity1(evt, tab) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+	setTimeout(function(){ document.getElementById(tab).innerHTML = "Good afternoon passengers. This is the pre-boarding announcement for flight 89B to Rome. We are now inviting those passengers with small children, and any passengers requiring special assistance, to begin boarding at this time. Please have your boarding pass and identification ready. Regular boarding will begin in approximately ten minutes time. Thank you."; }, 44000);
+    document.getElementById(tab).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+function openCity2(evt, tab) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tab).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+function openCity3(evt, tab) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+	initMap();
+    document.getElementById(tab).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdhGVhhztIQ3_2lD-_s1eWJE16HO_iiyw&callback=initMap"></script>
+
+<audio id="audio_airport" src="https://www.englishclub.com/audio/english-for-work/airline-pre-boarding.mp3" ></audio>
+	
+ </body>
+ </html>
